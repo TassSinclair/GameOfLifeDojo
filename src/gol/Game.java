@@ -4,13 +4,15 @@ import java.util.Random;
 
 public class Game {
 
-  private static final int SIZE = 10;
+  private static final int SIZE = 20;
 
-  private Cell[][] cells = new Cell[SIZE][SIZE];
+  private final Cell[][] cells = new Cell[SIZE][SIZE];
 
-  private Printer printer = new Printer();
+  private final Printer printer;
 
-  public Game() {
+  public Game(Printer printer) {
+    this.printer = printer;
+
     for (int x = 0; x < SIZE; x++) {
       for (int y = 0; y < SIZE; y++) {
         cells[x][y] = createCell();
