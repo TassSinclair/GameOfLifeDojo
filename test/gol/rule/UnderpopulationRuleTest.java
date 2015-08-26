@@ -11,19 +11,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class UnderpopulationRuleTest {
 
-  UnderpopulationRule rule = new UnderpopulationRule();
+  private UnderpopulationRule rule = new UnderpopulationRule();
 
   @Test
   public void shouldKillCellWhenTooFewAliveNeighbours() {
 
-    Cell cell = Cell.aliveCell();
+    Cell cell = Cell.alive();
 
-    List<Cell> neighbours = Arrays.asList(Cell.aliveCell(), Cell.deadCell(),  Cell.deadCell(),
-                                          Cell.deadCell(),                    Cell.deadCell(),
-                                          Cell.deadCell(),  Cell.deadCell(),  Cell.deadCell());
+    List<Cell> neighbours = Arrays.asList(Cell.alive(), Cell.dead(),  Cell.dead(),
+                                          Cell.dead(),                Cell.dead(),
+                                          Cell.dead(),  Cell.dead(),  Cell.dead());
 
     rule.apply(cell, neighbours);
-
     assertThat(cell.isAlive()).isFalse();
   }
 }

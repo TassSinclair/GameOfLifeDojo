@@ -4,30 +4,31 @@ import java.util.Random;
 
 public class Game {
 
-  private static final int SIZE = 20;
+  public static final int SIZE = 20;
 
   private final Cell[][] cells = new Cell[SIZE][SIZE];
 
-  private final Printer printer;
-
-  public Game(Printer printer) {
-    this.printer = printer;
-
+  public Game() {
     for (int x = 0; x < SIZE; x++) {
       for (int y = 0; y < SIZE; y++) {
-        cells[x][y] = createCell();
+        cells[x][y] = randomCell();
       }
     }
   }
 
-  private Cell createCell() {
+  private Cell randomCell() {
     if (new Random().nextBoolean()) {
-      return Cell.aliveCell();
+      return Cell.alive();
     }
-    return Cell.deadCell();
+    return Cell.dead();
   }
 
   public void tick() {
-    printer.print(cells);
+    for (int x = 0; x < SIZE; x++) {
+      for (int y = 0; y < SIZE; y++) {
+        System.out.print(cells[x][y].isAlive() ? '☺' : '-');
+      }
+      System.out.println();
+    }
   }
 }
