@@ -1,21 +1,31 @@
 package gol;
 
-public class Cell {
+public class Cell
+{
   private boolean alive;
 
-  public static Cell dead() {
+  public static Cell dead()
+  {
     return new Cell(false);
   }
 
-  public static Cell alive() {
+  public static Cell alive()
+  {
     return new Cell(true);
   }
 
-  private Cell(boolean alive) {
+  private Cell(boolean alive)
+  {
     this.alive = alive;
   }
 
-  public boolean isAlive() {
+  public boolean isAlive()
+  {
     return alive;
+  }
+
+  public void die()
+  {
+    this.alive = false;
   }
 }

@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import gol.Cell;
 
-public class UnderpopulationRule
+public class OverPopulation
     implements Rule
 {
 
@@ -12,18 +12,10 @@ public class UnderpopulationRule
   public void apply(Cell cell, Collection<Cell> neighbours)
   {
 
-    int alive = 0;
-    for (Cell neighbour : neighbours)
-    {
-      if (neighbour.isAlive())
-      {
-        alive++;
-      }
-    }
-    if (alive < 2)
+    if (neighbours.size() > 3)
     {
       cell.die();
     }
-
   }
+
 }
